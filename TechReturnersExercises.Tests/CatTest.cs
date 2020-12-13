@@ -33,42 +33,77 @@ namespace TechReturners.Tests
         public void CheckCatSetting()
         {
             ICat c = new DomesticCat();
-            Assert.Equals("domestic", c.Setting);
+            Assert.Equal("domestic", c.Setting);
         }
 
         [Fact]
         public void CheckCatHeight()
         {
             ICat c = new DomesticCat();
-            Assert.Equals(23, c.AverageHeight);
+            Assert.Equal(23, c.AverageHeight);
+        }
+        
+        [Fact]
+        public void CheckCheetahHeight()
+        {
+            ICat c = new CheetahCat();
+            Assert.Equal(987, c.AverageHeight);
         }
 
         [Fact]
         public void CheckLionHeight()
         {
             ICat c = new LionCat();
-            Assert.Equals(1100, c.AverageHeight);
+            Assert.Equal(1100, c.AverageHeight);
         }
 
         [Fact]
         public void CheckFeedLion()
         {
             ICat c = new LionCat();
-            Assert.Equals("Roar!!!!", c.Eat);
+            Assert.Equal("Roar!!!!", c.Eat);
         }
 
         [Fact]
         public void CheckFeedCheetah()
         {
             ICat c = new CheetahCat();
-            Assert.Equals("Zzzzzzz", c.Eat);
+            Assert.Equal("Zzzzzzz", c.Eat);
         }
 
         [Fact]
         public void CheckFeedCat()
         {
             ICat c = new DomesticCat();
-            Assert.Equals("Purrrrrrr", c.Eat);
+            Assert.Equal("Purrrrrrr", c.Eat);
+        }
+        
+        
+        [Fact]
+        public void CheckCatAfterEating()
+        {
+            ICat c = new DomesticCat();
+            
+            // fetch a random after=eating string and ensure that the 
+            // result matches a least one of the two valid domestic cat reactions. 
+            
+            string afterEat = c.AfterEat();
+            
+            Assert.True(afterEat == "It will do I suppose" || afterEat == "Purrrrrrr");
+        }
+        
+        [Fact]
+        public void CheckLionAfterEating()
+        {
+            ICat c = new LionCat();
+            Assert.Equal("Roar!!!!", c.AfterEat());
+        }
+        
+        [Fact]
+        public void CheckCheetahAfterEating()
+        {
+            ICat c = new CheetahCat();
+            Assert.Equal("Zzzzzzz", c.AfterEat());
         }
     }
 }
